@@ -80,7 +80,8 @@ router.post("/api/nekretnine/pretraga", (req, res, next) => {
 });
 
 router.post("/api/nekretnine", proveriAuth, multer({storage: storage}).single("slika") ,  (req, res, next) => {
-  const url = req.protocol + '://' + req.get("host");
+  // const url = req.protocol + '://' + req.get("host");
+  const url = req.protocol + '://' + 'iteh-nekretnine.herokuapp.com';
   // console.log("Url: " + url);
   console.log(req.file);
   const nekretnina = new Nekretnina({
@@ -149,7 +150,8 @@ router.put("/api/nekretnine/:id", multer({storage: storage}).single("slika"), pr
   console.log("image path: " + imagepath);
   if(req.file) {
     console.log("usao u req.file");
-    const url = req.protocol + '://' + req.get("host");
+    // const url = req.protocol + '://' + req.get("host");
+    const url = req.protocol + '://' + 'iteh-nekretnine.herokuapp.com';
     imagepath = url + "/images/" + req.file.filename;
     console.log("image path2: " + imagepath);
   }
